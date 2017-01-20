@@ -3,9 +3,9 @@ LIFE-CHILD, University of Leipzig, Germany
 
 ## R
 
-1. [Session](https://github.com/TPeschel/tpeschel.github.io/edit/master/README.md)
+1. [Session](https://github.com/TPeschel/R-Course/blob/master/sessions/session4/slides/html/talk.html)
   - Basics
-2. [Session](https://github.com/TPeschel/tpeschel.github.io/edit/master/README.md)
+2. [Session](https://github.com/TPeschel/tpeschel.github.io/sessions/session4/slides/html/talk.html)
   - Data Frames
 
 
