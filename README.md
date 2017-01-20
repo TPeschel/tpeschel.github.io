@@ -2,10 +2,10 @@
 LIFE-CHILD, University of Leipzig, Germany
 ### R
 
-1. Session 1
-  [Link](https://github.com/TPeschel/tpeschel.github.io/edit/master/README.md)
-2. Session 2
-  [Link](https://github.com/TPeschel/tpeschel.github.io/edit/master/README.md)
+1. [Session](https://github.com/TPeschel/tpeschel.github.io/edit/master/README.md)
+  - Basics
+2. [Session](https://github.com/TPeschel/tpeschel.github.io/edit/master/README.md)
+  - Data Frames
 
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
