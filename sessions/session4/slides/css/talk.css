@@ -1,0 +1,127 @@
+body {
+    
+    color : #1A1A18;
+    background-color : white;
+}
+
+.section .reveal .state-background {
+    
+    color : white;
+    background-color : #1A1A18;
+}
+
+.section .reveal h1 {
+    
+    color:    #FDC300;
+    background-color: #1A1A18;
+    position: relative;
+    font-weight : bold;
+    font-size : 400%;
+}
+
+.section .reveal p {
+    
+    color:    #98BD0E;
+    background-color: #1A1A18;
+    position: relative;
+    font-weight : normal;
+}
+/*
+.reveal .present {
+   
+   background:          white;
+   background-image:    url(http://life.uni-leipzig.de/fileadmin/templates/2011/images/headpic_de.jpg);
+   background-repeat:   no-repeat;
+   background-position: 0% 9.35%;
+   background-size:     80%;
+}
+*/
+.reveal h3 {
+   
+   position: relative;
+   top:      0%;
+   left:     0%;
+   background-color : white;
+   color : #98BD0E;
+   font-weight: bold;
+   font-size : 200%;
+}
+
+.reveal .slideContent h3 {
+   
+   left: 0%;
+}
+
+.table .reveal {
+    
+    color : #98BD0E;
+}
+
+.reveal table {
+    
+  border-width: 1px;
+  border-spacing: 2px;
+  border-style: solid;
+  border-color: gray;
+  border-collapse: collapse;
+  font-size: 0.7em;
+  margin: auto;
+}
+
+.reveal table th {
+  border-width: 1px;
+  padding-left: 10px;
+  padding-right: 25px;
+  font-weight: bold;
+  border-style: solid;
+  border-color: gray;
+}
+
+.reveal table td {
+  border-width: 1px;
+  padding-left: 10px;
+  padding-right: 25px;
+  font-weight: normal;
+  border-style: solid;
+  border-color: gray;
+}
+
+
+.reveal pre {   
+  margin-top: 0;
+  max-width: 95%;
+  border: 1px solid #ccc;
+  white-space: pre-wrap;
+  margin-bottom: 1em; 
+}
+
+/*
+.reveal h3 {
+    
+    background-color : white;
+    color : #98BD0E;
+    font-weight: bold;
+    font-size : 24;
+}
+*/
+.reveal p {
+    
+    background-color : white;
+    color : #1A1A18;
+    font-size : 14;
+}
+
+.reveal ul {
+    
+    background-color : white;
+    color : Black;
+    font-size : 14;
+}
+
+.small-code pre code {
+  font-size: 1.0em;
+}
+
+.tiny-code pre code {
+  font-size: .85em;
+}
