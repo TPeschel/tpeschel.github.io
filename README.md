@@ -1,3 +1,3 @@
-# tpeschel.github.io
-github-pages
-R beginner's course for health professionals 
+# LIFE CHILD,
+#   UNI LEIPZIG, GERMANY
+## R beginner's course for health professionals 
