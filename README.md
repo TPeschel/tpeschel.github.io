@@ -1,6 +1,7 @@
-## Welcome to the R beginner's course for health professionals
+# Welcome to the R beginner's course for health professionals
 LIFE-CHILD, University of Leipzig, Germany
-### R
+
+## R
 
 1. [Session](https://github.com/TPeschel/tpeschel.github.io/edit/master/README.md)
   - Basics
