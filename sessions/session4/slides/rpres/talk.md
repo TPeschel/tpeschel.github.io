@@ -51,7 +51,6 @@ incremental: true
 - to compare their means, we apply the so called **T-Test**
 - to do this we compute the so called **T-Statistic**:  
 
-$$t=\frac{\bar{X}_{m}-\bar{X}_{w}}{s_{overall}\sqrt{\frac{1}{n_{m}}+\frac{1}{n_{w}}}}$$
 
 Decisions can be right or wrong
 ========================================================
