@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Session5</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Session5">
+  <meta name="author" content="Mandy">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Session5</h1>
+    <h2></h2>
+    <p>Mandy<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <style>
+strong {
+  font-weight: bold;
+  color: red;
+  font-size: 115%
+}
+</style>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-2" style="background:grey;">
+  <hgroup>
+    <h1>Recap</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Recap</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>You should know now:</p>
+
+<ul class = "build incremental">
+<li>the command  <code>t.test()</code> and the different kinds of usage</li>
+<li>that <code>y ~ x</code> in R mean <em>y dependent on x</em> (formula syntax)</li>
+<li>that R can roll dice for you (as one example for random number generator)</li>
+</ul>
+
+<hr>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Exercises</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>For the <code>babies</code> data set, the variable <code>age</code> contains the recorded mom&#39;s age and <code>dage</code> contains the dad&#39;s age for several different cases in the sample. Do a significance test of the null hypothesis of equal ages against a one-sided alternative that the dads are older in the sampled population. </p>
+
+<ul>
+<li>install the package UsingR (you may check if the package is already installed) </li>
+<li>do the respective t-test</li>
+<li>redo the test assuming equal variances! How do the results differ? Would this assumption be appropriate?</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-5" style="background:grey;">
+  <hgroup>
+    <h1>Anova</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Anova</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>a technique we use when all explanatory variables are categorical (factor)</li>
+<li>if there is one factor with three or more levels we use one-way ANOVA (only two levels: t-test should be preferred, would give exactly the same answer since with 2 levels F = t<sup>2)</sup></li>
+<li>for more factors there there is two-way, three-way anova</li>
+<li>central idea is to compare two or more means by comparing variances</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Example Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>A data frame with 14 observations on 2 variables.</p>
+
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>content</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ozone:</td>
+<td>athmospheric ozone concentration</td>
+</tr>
+<tr>
+<td>garden:</td>
+<td>garden id</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Example Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th>Var</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+<th>14</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ozone</td>
+<td>9</td>
+<td>7</td>
+<td>6</td>
+<td>8</td>
+<td>5</td>
+<td>11</td>
+<td>9</td>
+<td>11</td>
+<td>9</td>
+<td>6</td>
+<td>10</td>
+<td>8</td>
+<td>8</td>
+<td>12</td>
+</tr>
+<tr>
+<td>garden</td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>b</td>
+<td>a</td>
+<td>b</td>
+<td>b</td>
+<td>b</td>
+<td>b</td>
+<td>a</td>
+<td>b</td>
+<td>a</td>
+<td>a</td>
+<td>b</td>
+</tr>
+</tbody></table>
+
+<p>Source: M. Crawley, The R-Book</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Exercise</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>read in the respective data file <em>anova.txt</em> using the <code>read.table()</code> command</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Solution</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">gardens &lt;- read.table(&quot;session5dat/gardens2.txt&quot;, header = T)
+head(gardens)
+</code></pre>
+
+<pre><code>##   ozone garden index
+## 1     6      a    10
+## 2     8      a     7
+## 3     5      a     1
+## 4     9      a     4
+## 5     7      a     5
+## 6     8      a     6
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Total Sum of Squares</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>first we plot the values </li>
+</ul>
+
+<p><img src="assets/fig/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Total Sum of Squares</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>there is a lot of scatter, indicating that the variance in ozone is large</li>
+<li>to get a feel for the overall variance we plot the overall mean (8.5) and indicate each of the residuals by a vertical line</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Total Sum of Squares</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Total Sum of Squares</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>we refer to this overall variation as the total sum of squares, SSY or TSS</li>
+</ul>
+
+<p>\[SSY = \sum(y-\bar{y})^2\]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Total Sum of Squares</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>here we have \[ SSY = 55.5 \]</li>
+</ul>
+
+<p><img src="assets/fig/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>Group means</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>now instead of fitting the overall mean, let us fit the individual garden means</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>Group means</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>now instead of fitting the overall mean, let us fit the individual garden means</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>garden</th>
+<th>mean</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>a</td>
+<td>7</td>
+</tr>
+<tr>
+<td>b</td>
+<td>10</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>Group means</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Garden A: black</li>
+<li>Garden B: red</li>
+</ul>
+
+<p><img src="assets/fig/unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Group means</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>now we see that the mean ozone concentration is substantially higher in garden B</li>
+<li>the aim of ANOVA is to determine
+
+<ul>
+<li>whether it is significantly higher or</li>
+<li>whether this kind of difference could come by chance alone</li>
+</ul></li>
+</ul>
+
+<hr>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>Error Sum of Squares</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>When the means are significantly different then the sum of squares
+computed from the individual garden means will be smaller than
+the sum of squares computed from the overall mean.</p>
+
+<ul>
+<li>we define the new sum of squares as the error sum of squares (error in the sense of <em>redidual</em>) \[ SSE = \sum(y_{garden A}-\bar{y}_{garden A})^2+\sum(y_{garden B}-\bar{y}_{garden B})^2 \]</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>Error Sum of Squares</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>here we have \[ SSE = 24.0 \]</li>
+</ul>
+
+<p><img src="assets/fig/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>Treatment Sum of Squares</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>then the component of the variation that is explained by the difference (i.e. explained by the predictor) of the means is called the treatment sum of sqares SSA </li>
+<li>analysis of variance is based on the notion that we break down the total sum of squares into useful and informative components</li>
+</ul>
+
+<p>\[ SSY = SSE + SSA \] </p>
+
+<p>where</p>
+
+<ul>
+<li>SSA = explained variation </li>
+<li>SSE = unexplained variation</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h2>Anova Table</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th>Source</th>
+<th>Sum of squares</th>
+<th>Degrees of freedom</th>
+<th>Mean square</th>
+<th>F ratio</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Garden</td>
+<td>\(31.5\)</td>
+<td>\(1\)</td>
+<td>\(31.5\)</td>
+<td>\(15.75\)</td>
+</tr>
+<tr>
+<td>Error</td>
+<td>\(24.0\)</td>
+<td>\(12\)</td>
+<td>\(s^2=2.0\)</td>
+<td></td>
+</tr>
+<tr>
+<td>Total</td>
+<td>\(55.5\)</td>
+<td>\(13\)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>F-Test</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>now we need to test whether an F ratio of 15.75 is large or small
+
+<ul>
+<li>we can use a table or software package</li>
+<li>I use here R to calculate the cumulative probability</li>
+</ul></li>
+</ul>
+
+<pre><code class="r">1 - pf(15.75,1,12)
+</code></pre>
+
+<pre><code>## [1] 0.001864103
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>F-Test</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-26" style="background:;">
+  <hgroup>
+    <h2>Anova in R</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>in R we use the <code>lm()</code> command and</li>
+<li>the formula syntax <code>a ~ b</code></li>
+<li>we assign the result to a variable</li>
+</ul>
+
+<pre><code class="r">mm &lt;- lm(ozone ~ garden, data = gardens)
+mm
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = ozone ~ garden, data = gardens)
+## 
+## Coefficients:
+## (Intercept)      gardenb  
+##           7            3
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-27" style="background:;">
+  <hgroup>
+    <h2>Anova in R</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">summary(mm)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = ozone ~ garden, data = gardens)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+##     -2     -1      0      1      2 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   7.0000     0.5345  13.096 1.82e-08 ***
+## gardenb       3.0000     0.7559   3.969  0.00186 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.414 on 12 degrees of freedom
+## Multiple R-squared:  0.5676, Adjusted R-squared:  0.5315 
+## F-statistic: 15.75 on 1 and 12 DF,  p-value: 0.001864
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:;">
+  <hgroup>
+    <h2>Anova in R</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">anova(mm)
+</code></pre>
+
+<pre><code>## Analysis of Variance Table
+## 
+## Response: ozone
+##           Df Sum Sq Mean Sq F value   Pr(&gt;F)   
+## garden     1   31.5    31.5   15.75 0.001864 **
+## Residuals 12   24.0     2.0                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:;">
+  <hgroup>
+    <h2>Anova - Visualization</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>there are two traditional ways of plotting the results of ANOVA</li>
+<li>box-and-whisker plots</li>
+<li>barplots with error bars</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-30" style="background:;">
+  <hgroup>
+    <h2>Anova - Visualization</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figures/boxplot1.png" alt="Boxplot1"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-31" style="background:;">
+  <hgroup>
+    <h2>Anova - Visualization</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figures/boxplot2.png" alt="bp2"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-32" style="background:;">
+  <hgroup>
+    <h2>Anova - Visualization</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figures/barplotci.png" alt="BarplotCI"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-33" style="background:;">
+  <hgroup>
+    <h2>Anova - Visualization</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figures/barplotse.png" alt="BarplotSE"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title=''>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Recap'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Recap'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Exercises'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Anova'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Anova'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Example Data'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Example Data'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Exercise'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Solution'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Total Sum of Squares'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Total Sum of Squares'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Total Sum of Squares'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Total Sum of Squares'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Total Sum of Squares'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Group means'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Group means'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Group means'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Group means'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Error Sum of Squares'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Error Sum of Squares'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Treatment Sum of Squares'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='Anova Table'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='F-Test'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='F-Test'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Anova in R'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='Anova in R'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Anova in R'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='Anova - Visualization'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='Anova - Visualization'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='Anova - Visualization'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='Anova - Visualization'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='Anova - Visualization'>
+         33
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

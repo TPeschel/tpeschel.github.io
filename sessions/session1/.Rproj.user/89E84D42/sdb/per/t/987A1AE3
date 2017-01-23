@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library( \"ggplot2\" )\nlibrary( \"dplyr\" )\n\neducation <- read.csv(\"http://www.barrolee.com/data/BL_v2.1/BL2013_MF1599_v2.1.csv\")\n\nsummary( education )\n\nmax( education$lp )\n\nplot( education$lp, education$lpc, col=education$country )\n\nplot(\n  education$lpc ~ education$lp,\n  col  = education$country,\n  main = \"education\",\n  xlab = \"precentage which had primary school completed\",\n  ylab = \"precentage of population with primary school as highest level\" \n)\n\nabline( 0, 1 )\n",
+    "created" : 1481540875134.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "469861773",
+    "id" : "987A1AE3",
+    "lastKnownWriteTime" : 1481542863,
+    "last_content_update" : 1481542863747,
+    "path" : "~/Dokumente/RLearning/MandysKurs/20161128/2016kurs/session1/excersise1.R",
+    "project_path" : "excersise1.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

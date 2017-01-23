@@ -1,0 +1,464 @@
+session2
+========================================================
+author: Mandy
+date: 30.05.2016
+autosize: true
+
+Recap
+========================================================
+type: section
+incremental: true
+
+Recap
+========================================================
+title: false
+
+We learned about
+- data structures:
+  - vectors
+  - data frames
+- assigning
+  - **=**
+  - **<-**
+
+
+Recap
+========================================================
+title: false
+incremental: true
+
+- Functions e.g.:
+  - **c()**
+  - **plot()**
+  - **nrow()**
+  - **summary()**
+
+
+Exercise
+========================================================
+
+- use R to calculate $4^3 + 3^{2+1}$
+- Let our small data set be: 2 5 4 10 8
+  1. Enter these data into a data vector *v*
+  2. Find the square of each number.
+  3. Substract 6 from each number
+  4. Substract 9 from each number and then square the answer
+  
+
+
+
+Recap
+========================================================
+title: false
+incremental: true
+
+- Accessing parts of data frames via
+  - **$**
+  - and numbers using square brackets **[ ]**
+    - vectors: **my.vector[index]**
+    - data frame: **my.dataframe[rows.index,col.index]**
+
+Exercise
+========================================================
+
+- load the *ChickWeight* data set into the workspace using **data()**
+- how many observations and how many variables? How did you get the information?
+- what is the mean, min and max of *weight* and *Time*
+- use **plot()** to produce a boxplot of *weight* dependent on *Diet*
+
+
+The working directory
+========================================================
+incremental: true
+
+- in every R session you can define the so called working directory
+- the working directory is the place (folder) on your hard drive or usb stick where R is saving objects, or is looking for files you wanna load
+- you can check what the working directory by typing **getwd()**
+- you can set the working directory e.g.
+  - using **setwd("path/to/the/course/session2")**
+  - using the menu: Session -> Set Working Directory -> Choose Directory
+
+The working directory
+========================================================
+incremental: true
+
+Example:
+
+```{r}
+setwd("/media/mandy/Volume/transcend/life/2016kurs/session2")
+```
+- R comes from unix systems - so even on Windows you have to use the slash - not the backslash
+- you can set the working directory via the menu - and copy the line to your script afterwards
+
+Exercise
+========================================================
+- check your working directory
+- set the working directory to today's sesssion folder if not already done
+
+
+
+Packages
+========================================================
+type: section
+
+Packages
+========================================================
+title: false
+
+- some basic R functionality is installed while the base installation of R
+- this basic functionality can be extendet through external *packages*
+- packages are primarily available through CRAN
+- other important repositories
+  - http://bioconductor.org/
+  - https://r-forge.r-project.org/
+  - https://github.com/
+  - https://code.google.com/
+  
+
+Packages
+========================================================
+title: false
+incremental: true
+
+- you can see the list of packages installed already on your computer looking on the *Packages* pane in the lower right panel in RStudio  
+- marked packages are already attached to you workspace (i.e. you can use the functionality from the package)
+- you can load a package by marking the package or by typing 
+```{r, eval=FALSE}
+library(package.name)
+```
+
+Packages
+========================================================
+title: false
+
+- for example 
+```{r, eval=FALSE}
+library(MASS)
+```
+- using the **library()** command is recommended for scripts 
+
+Install Packages
+========================================================
+incremental: true
+
+- you can use search for installed packages
+- if a package is not already installed you can use the *Install* menus inside the *Packages* pane or via the menu: *Tools* -> *Install Packages*
+- begin typing the name(s) of the packages you wanna install
+- please be sure that the *install dependencies* is marked
+- click *Install*
+
+Exercise
+========================================================
+- check if the packages *ggplot2*, *dplyr*, *readxl* are already installed
+- if not: install them
+- load them (add the respective commands to your session2 script)
+
+
+Load data into R
+========================================================
+
+R can import data of different forms, from different file types, etc.
+It is important to remember: for almost every kind of file type you have to 
+use a different function, e.g.
+
+File Type | function to load the data | package
+----------|--------------------------|---------
+.rdata (R's own format) | **load()**| base
+.csv (English)      | **read.csv()**| base
+.csv  (German)    | **read.csv()** | base
+.txt | **read.table()** | base
+.xlsx | **read_excel()** | readxl
+.sav (SPSS)| **spss.get()**| Hmisc
+.dta (Stata) | **stata.get()**|Hmisc
+.sasbdat (SAS) | **sas.get()** | Hmisc
+.sasxport (SAS Transport Files) | **sasxport.get()** | Hmisc
+
+Load data into R
+========================================================
+
+- the syntax is the same for any of these files: 
+  - use the function with the path of the file you wanna load as argument
+  - sometimes there are further arguments to specify e.g. for an excel file which sheet you wanna to import
+  - assign the result to a suitable name
+  - do not type the whole path: use the auto completion
+
+Load data into R
+========================================================
+title: false  
+  
+```{r, loadexcel1}
+library(readxl)
+x1 <- read_excel("data/20160523evaluation_Kopie.xlsx",1)
+```
+
+Exercise
+========================================================
+- with **excel_sheets("path/to/filename.xlsx")** you read out the names of existing worksheets; use the command on the excel file from above!
+  - how many data sheets do the file have?
+- create three further dataframes *x2*, *x3*, *x4* from the other three excel sheets 
+
+Exercise
+========================================================
+
+```{r}
+x2 <- read_excel("data/20160523evaluation_Kopie.xlsx",2)
+x3 <- read_excel("data/20160523evaluation_Kopie.xlsx",3)
+x4 <- read_excel("data/20160523evaluation_Kopie.xlsx",4)
+```
+
+Exercise
+========================================================
+- create another data frame from the file *mz2010_cf.sav* (data folder). Hints:
+  - what is the type of the file?
+  - what command do you need to load such a file?
+  - which package contains this command?
+  - have you the package already installed?
+  - did you load the package?
+
+Exercise
+========================================================
+title: false
+
+```{r}
+library(Hmisc)
+yy <- spss.get("data/mz2010_cf.sav")
+```
+
+Exercise
+========================================================
+- the documention of this data file is also contained in the data folder
+  - look for the variable for sex (*geschlecht*) - what is the resp. column name?
+  - what information is contained in the variable *EF310*
+  - use the command **table()** on the these two columns, e.g.
+
+```{r, eval=FALSE}
+  table(yy$EF310)
+```
+
+
+ggplot2
+========================================================
+type: section
+
+
+ggplot2
+========================================================
+title: false
+incremental: true
+
+- *ggplot2* is a package to create graphics for publications
+- the *gg* stands for grammar of graphics (Leland Wilkinson, second edition 2005)
+- the package is written by Hadley Wickham
+- there is a cheat sheet available via the menu: *Help* -> *Cheatsheets* (internet connection required)
+- extensive documentation: http://docs.ggplot2.org/
+
+ggplot2
+========================================================
+title: false
+incremental: true
+
+- the definition of a ggplot graphic needs
+  - to specify the data frame containing information
+  - a mapping from the variables in the data frame to characteristic of the graphics (**aes()**)
+  - a specification of the used geometry (i.e. what kind of plot do you want)
+- it sounds a bit complicated, but the logic is powerful and makes it very easy to create complicated graphics
+
+Example/Exercise
+========================================================
+incremental: true
+
+  - what do you think - to visualize the information contained in the tabulation of the *EF310* variable what kind of graphics would be appropriate? (script)
+
+GGPLOT2 Examples
+========================================================
+type: section
+
+GGPLOT2 Examples
+========================================================
+title: false
+
+
+
+```{r ggplot2ex1}
+library(ggplot2)
+ggplot(yy, aes(x = EF310)) +
+  geom_bar()
+```
+
+GGPLOT2 Examples
+========================================================
+title: false
+
+
+```{r ggplot2ex2}
+ggplot(yy, aes(x = EF310, colour = EF46)) +
+  geom_bar()
+```
+
+GGPLOT2 Examples
+========================================================
+title: false
+
+
+```{r ggplot2ex3}
+ggplot(yy, aes(x = EF310, colour = EF46)) +
+  geom_bar(position = "dodge")
+```
+
+GGPLOT2 Examples
+========================================================
+title: false
+
+
+```{r ggplot2ex4}
+ggplot(yy, aes(x = EF310, colour = EF46)) +
+  geom_bar(position = "fill")
+```
+
+GGPLOT2 Examples
+========================================================
+title: false
+
+
+```{r ggplot2ex5}
+ggplot(yy, aes(x = EF310, fill = EF46)) +
+  geom_bar(position = "fill")
+```
+
+GGPLOT2 Examples
+========================================================
+title: false
+
+
+```{r ggplot2ex6}
+ggplot(yy, aes(x = EF310, fill = EF46)) +
+  geom_bar(position = "fill") +
+  coord_flip()
+```
+
+GGPLOT2 Examples
+========================================================
+title: false
+
+
+```{r ggplot2ex8}
+library(stringr)
+ggplot(yy, aes(x = EF310, fill = EF46)) +
+  geom_bar(position = "fill") +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 25)) + 
+  coord_flip()
+```
+
+
+GGPLOT2 Examples
+========================================================
+title: false
+
+
+```{r ggplot2ex9}
+library(scales)
+ggplot(yy, aes(x = EF310, fill = EF46)) +
+  geom_bar(position = "fill") +
+  ylab("proportion") +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 25)) + 
+  scale_y_continuous(labels = percent) + 
+  coord_flip()
+```
+
+GGPLOT2 Examples
+========================================================
+title: false
+
+
+
+```{r ggplot2ex10}
+ggplot(yy, aes(x = EF310, fill = EF46)) +
+  geom_bar(position = "fill") +
+  ylab("proportion") +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 25)) + 
+  scale_y_continuous(labels = percent) +
+  scale_fill_manual(values = c("männlich"="midnightblue",
+                               "weiblich"="deeppink4")) +
+  coord_flip()
+```
+1. the variable *E49* in the mz data set contains the information of the about the marital status
+  - plot the distribution of this variable using a barplot
+  - colour the bars according to sex
+  - use fill to convert into proportions
+2. the variables *EF20* and *EF40* contain numeric information 
+  - use **ggplot()** to create a scatterplot *EF44* on the x-axis 
+     and *E20* on the y-axis (you need **geom_point()** instead of
+     *geom_bar()*)
+  - colour the points according to colour...
+  - interpret! What`s a possible problem
+
+
+Graphics examples from Monday
+========================================================
+type: section
+
+Graphics examples from Monday
+========================================================
+title: false
+
+```{r}
+ggplot(yy,aes(x = EF310, fill = EF46)) +
+  geom_bar(position = position_dodge(), alpha = 0.4) +
+  scale_x_discrete(labels = 1:8) +
+  scale_fill_manual(values = c("männlich" = "midnightblue",
+                               "weiblich" = "deeppink3")) + 
+  ylab("Anzahl Personen") + 
+  xlab("hoechster Schulabschluss") +
+  ggtitle("Barplot")
+```
+
+Explanations
+========================================================
+
+- the **position = position_dodge()** places the bars for different sexes next to each other
+- **scale_x_discrete(labels = 1:8)**: here we set change the labels on the x-axis to the codes, we use the discrete specification because we have a discrete x-axis
+- **alpha** setting alpha at a value between 0 and 1 sets the transparency of the filling of the bars: 0 is completely transparent (i.e. invisible), 1 is completely opaque
+- **scale_fill_manual()** customize the colour scale for fillings: here we set manually "maennlich" to "midnightblue" and "weiblich" to "deeppink"
+- **ylab()**, **xlab()** and **ggtitle()** can be used to change the titles of the axes, resp. the main title. An alternative would be the usage of **labs(y = "y-axis",x="x-axis",title = "title")
+
+
+Graphics examples from Monday
+========================================================
+title: false
+
+```{r}
+library(ggthemes)
+ggplot(yy,aes(x = EF310, fill = EF46)) +
+  geom_bar(position = position_fill(),colour="black") +
+  scale_x_discrete(labels = 1:8) +
+##  scale_fill_grey() + 
+  ylab("Anzahl Personen") + 
+  xlab("hoechster Schulabschluss") +
+  ggtitle("Barplot") +
+  facet_wrap(~EF49,nrow = 2) +
+  theme_stata()
+```
+
+
+Explanations
+========================================================
+
+- the **ggthemes** package provides predefined graphics designs, so you can have e.g. excel or stata look-alike graphics
+- **position = position_fill()** stretch you bars along the whole y-axis and shows the proportions of the sexes (transformation to percentages)
+- **facet_wrap()** creates facets defined by a formula like syntax (we will here about formulas soon)
+
+Next time
+========================================================
+type: section
+
+
+Levels of measurement
+========================================================
+type: section
+
+
+dplyr
+========================================================
+type: section
+
+
