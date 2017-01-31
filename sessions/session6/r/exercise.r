@@ -76,7 +76,7 @@ babies$number.sorted <- factor( babies$number, levels = names( sort( tbl.number,
 ## erzeuge ein Balkendiagramm der Haefigkeiten der Rassen
 ggplot ( babies ) +
   theme_bw( ) + ## nutze das theme black/white
-  geom_bar( aes( race.sorted ) ) ## nutze geom_bar, uebergieb als aesthetics die sortierten Rassen
+  geom_bar( aes( race.sorted ) ) ## nutze geom_bar, uebergib als aesthetics die sortierten Rassen
 
 ## erzeuge einen bar-plot der Haefigkeiten der Rauchertypen
 ggplot ( babies ) + 
@@ -97,7 +97,7 @@ ggplot ( babies ) +
 
 ## fuehre ANOVA mit dem Befehl "lm" durch
 ## und zeige die Ergebnisse sofort an ( deshalb die Klammern (...) um die Zuweisungen )
-## zeige danach sofoert eine Zusammenfassung der Ergebnisse der Analyse mittels "summary( )" an
+## zeige danach sofort eine Zusammenfassung der Ergebnisse der Analyse mittels "summary( )" an
 ( lm.race   <- lm( babies$bwt ~ babies$race ) )
 summary( lm.race )
 
@@ -108,7 +108,7 @@ summary( lm.smoke )
 summary( lm.number )
 
 ## zeige nur die Quotienten aus den Summen der quadrierten Residuen der einzelnen Gruppen
-## und derder Gesamtstichprobe
+## und der der Gesamtstichprobe
 ## das Ergebnis ist das Verhaeltnis aus Gruppenvarianz und Stichprobenvarianz
 ## und liegt zwischen 0 und 1
 summary( lm.race )$r.squared
@@ -159,10 +159,10 @@ coef( summary( lm.number ) )
 
 ## Interpretation der Werte
 ## ( Intercept ) ist der Referenzmittelwert, der sich aus der in der Tabelle
-## fehlenden Rasse "asian" zugewiesen berechnet. Die Zahlen darunter sind Offsets,
-## die zum Referenzwert addiert, die tatsaechlichen Mittelwerte der einzelnen Rassen angeben.
+## fehlenden Rasse "asian" berechnet. Die Zahlen darunter sind Offsets,
+## die zum Referenzwert addiert die tatsaechlichen Mittelwerte der einzelnen Rassen angeben.
 ## Beispiel:
-## racewhite: 3.13068904 + 0.31778568 = 3.448475
+## race white: 3.13068904 + 0.31778568 = 3.448475
 ## der t-Wert gibt an, wie extrem der Effekt ( der Mittelwert der Haeufigkeiten pro Rasse )
 ## bezueglich des Standardfehlers ist. Er ergibt sich aus Mittelwert / Std.Error
 ## Beispiel:
@@ -184,8 +184,6 @@ coef( summary( lm.number ) )
 
 ## install.packages("granovaGG")
 library( granovaGG )
-
-babies$race.no.na <- is.( babies$race )
 
 granovagg.1w( babies$bwt, babies$race )
 ## Fehler in if (owp$stats$F.statistic > 1) { : 
@@ -288,4 +286,4 @@ babies$drace <- recode( babies$drace,
 ( same.race <- prop.table( table( babies$race == babies$drace ) ) )
 
 ## augenfreundlichere Variante
-round( same.race * 100, 2 )
+paste0( round( same.race * 100, 2 ), '%' )
