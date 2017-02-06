@@ -7,7 +7,8 @@ library( "ggplot2" )
 ## setze das aktuelle Arbeitsverzeichnis auf das session6/r/
 ## hier: bleibe im aktuellen Verzeichnis. Eigentlich sinnlos.
 ## hier bitte in das Verzeichnis "sessions/session6/r/" wechseln
-setwd( 'HIER PFAD ZU EUREM "sessions/session6/r"-VERZEICHNIS EINGEBEN!!!' )
+
+setwd( "~/Dokumente/RLearning/githubRepos/tpeschel.github.io/sessions/session6/r/" )
 
 ## lade babies.xlsx und weise die Tabelle der Variablen babies zu
 babies <- read_excel( "../data/babies.xlsx" )
@@ -240,9 +241,10 @@ table( babies$sex.mf )
 ## die Klasse ist nun  ein Faktor 
 
 table( babies$marital )
+
 babies$marital.text <- factor( babies$marital, 
-                         levels = c( 1 : 5 ),
-                         labels = c( "married", "legally separated", "divorced", "widowed", "never married" ) )
+                         levels = c( 0 : 3, 5 ),
+                         labels = c( "widowed", "married", "legally separated", "divorced", "never married" ) )
 table( babies$marital.text )
 
 ## das Einkommen ist als Kode hinterlegt
@@ -277,7 +279,6 @@ library( car )
 
 babies$drace <- recode( babies$drace,
                        '0:5="white";6="mex";7="black";8="asian";c(9,10)="mixed";99=NA')
-
 
 ## babies$race == babies$drace gibt einen logischen Vektor [ TRUE, FALSE, FALSE, ... ]
 ## zurueck, der fuer jede Zeile des Datensatzes angibt, ob die Rassen uebereinstimmen
