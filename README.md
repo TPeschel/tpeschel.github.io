@@ -9,4 +9,4 @@ LIFE-CHILD, University of Leipzig, Germany
 5. [Session 5](https://TPeschel.github.io/sessions/session5)
 6. [Session 6](https://TPeschel.github.io/sessions/session6/index.html)
 7. [Session 7](https://TPeschel.github.io/sessions/session7/index.html)
-8. [Session 8](https://TPeschel.github.io/sessions/session8/index.html)
+8. [Session 8](https://TPeschel.github.io/sessions/session8/session8/index.html)
