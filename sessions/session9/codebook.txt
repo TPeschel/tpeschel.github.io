@@ -1,0 +1,40 @@
+## RIAGENDR - Gender
+## RIDAGEYR - Age in years at screening 
+## RIDEXAGM - Age in months at exam - 0 to 19 years
+
+
+## BMDSTATS - Body Measures Component Status Code
+## 1 	Complete data for age group 
+## 2 	Partial: Only height and weight obtained
+## 3 	Other partial exam 
+## 4 	No body measures exam data
+
+## BMXWT - Weight (kg)
+## BMXRECUM - Recumbent Length (cm)
+## BMXHT - Standing Height (cm)
+## BMXBMI - Body Mass Index (kg/m**2)
+## BMDBMIC - BMI Category - Children/Adolescents
+## BMXARMC - Arm Circumference (cm)
+## BMXWAIST - Waist Circumference (cm)
+
+
+## PAQ635 - Walk or bicycle
+## 1 	Yes 	2344 	2344 	
+## 2 	No 	4434 	6778 	PAQ650
+## 7 	Refused 	1 	6779 	PAQ650
+## 9 	Don't know 	0 	6779 	PAQ650
+## . 	Missing 	2328 	9107
+
+## PAQ640 - Number of days walk or bicycle
+## 1 to 7 	Range of Values 	2343 	2343 	
+## 77 	Refused 	0 	2343 	PAQ650
+## 99 	Don't know 	1 	2344 	PAQ650
+## . 	Missing 	6763 	9107 	
+
+## PAD645 -  Minutes walk/bicycle for transportation (per day)
+
+## BPXCHR - 60 sec HR (30 sec HR * 2)
+## BPXSY3 - Systolic: Blood pres (3rd rdg) mm Hg
+## BPXDI3 - Diastolic: Blood pres (3rd rdg) mm Hg
+
+

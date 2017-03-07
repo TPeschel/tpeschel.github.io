@@ -1,0 +1,682 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3c.org/1999/xhtml" xmlns:dt="urn:schemas-microsoft-com:datatypes">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+					BODY {
+					BORDER-STYLE: none;
+					FONT: 75% Verdana, Arial, Helvetica, sans-serif;
+					TEXT-ALIGN: left;
+					}
+
+					H1 {
+					COLOR: #0c5205;
+					FONT-FAMILY: "Trebuchet MS", Arial, sans-serif;
+					FONT-SIZE: 2em;
+					FONT-WEIGHT: normal;
+					MARGIN-TOP: 0;
+					PADDING-BOTTOM: 10px;
+					}
+
+					H2 {
+					COLOR: #0c5205;
+					FONT-FAMILY: "Trebuchet MS", Arial, sans-serif;
+					FONT-SIZE: 1.6em;
+					FONT-WEIGHT: normal;
+					}
+
+					H3 {
+					COLOR: #000;
+					FONT-FAMILY: "Trebuchet MS", Arial, sans-serif;
+					FONT-SIZE: 1.5em;
+					FONT-WEIGHT: normal;
+					}
+
+					H4 {
+					COLOR: #000;
+					FONT-FAMILY: "Trebuchet MS", Arial, sans-serif;
+					FONT-SIZE: 1.3em;
+					FONT-WEIGHT: bold;
+					}
+
+					H5 {
+					COLOR: #000;
+					FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+					FONT-SIZE: 1em;
+					FONT-WEIGHT: bold;
+					}
+
+					H5.specialnote {
+					COLOR: #000;
+					FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+					FONT-SIZE: 1.2em;
+					FONT-STYLE: italic;
+					FONT-WEIGHT: bold;
+					}
+
+					A {
+					COLOR: #0a29a5;
+					TEXT-DECORATION: none;
+					}
+
+					P {
+					FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+					FONT-SIZE: 1em;
+					LINE-HEIGHT: 1.33em;
+					MARGIN: 0 3em 1em;
+					PADDING: 0;
+					TEXT-ALIGN: left;
+					}
+
+					UL {
+					LIST-STYLE-TYPE: disc;
+					MARGIN: 0 3.5em 1em;
+					PADDING: 0;
+					}
+
+					UL LI {
+					MARGIN-BOTTOM: 0.7em;
+					MARGIN-LEFT: 1.5em;
+					MARGIN-TOP: 0.7em;
+					PADDING: 0;
+					}
+
+					OL {
+					LIST-STYLE-TYPE: decimal;
+					MARGIN: 0;
+					OVERFLOW: hidden;
+					PADDING: 0;
+					PADDING-LEFT: 2em;
+					}
+
+					OL LI {
+					MARGIN-BOTTOM: 0.7em;
+					MARGIN-LEFT: 1.5em;
+					MARGIN-TOP: 0.7em;
+					PADDING: 0;
+					}
+
+					TABLE {
+					BORDER: #000 1px solid;
+					BORDER-COLLAPSE: collapse;
+					MARGIN: 0 auto 1em;
+					MAX-WIDTH: 600px;
+					PADDING: 2px;
+					page-break-inside: avoid;
+					TABLE-LAYOUT: auto;
+					}
+
+					th {
+					background: #f4f4e1;
+					BORDER: #000 1px solid;
+					FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+					PADDING: 5px;
+					TEXT-ALIGN: center;
+					VERTICAL-ALIGN: bottom;
+					}
+
+					TD {
+					BORDER: #000 1px solid;
+					FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+					PADDING: 5px;
+					TEXT-ALIGN: left;
+					VERTICAL-ALIGN: top;
+					}
+
+					td.values2 {
+					text-align: RIGHT;
+					vertical-align: top;
+					}
+
+					TABLE CAPTION {
+					FONT-FAMILY: Trebuchet MS, Arial, sans-serif;
+					FONT-SIZE: 1.6em;
+					FONT-WEIGHT: normal;
+					PADDING-BOTTOM: 0.5em;
+					}
+
+					div#wrapper { width: 650px; }
+
+					div#toc {
+					border-color: #CCC;
+					border-style: solid;
+					border-width: 1px;
+					float: left;
+					height: 95%;
+					left: 700px;
+					overflow: scroll;
+					position: fixed;
+					top: 10px;
+					z-index: 10;
+					}
+
+					div#toc h3 {
+					background-color: #f4f4e1;
+					padding: 3px;
+					}
+
+					div#toc ul, li {
+					margin-left: 3px;
+					margin-right: 5px;
+					}
+
+					div#PageHeader {
+					border-bottom: thin solid #999;
+					margin-bottom: 12px;
+					width: 650px;
+					}
+
+					div#Sections { width: 650px; }
+
+					div#Codebook { width: 650px; }
+
+					div#Codebook dl {
+					margin: 2em 0 10px 40px;
+					padding: 0;
+					width: 600px;
+					}
+
+					div#Codebook dt {
+					float: left;
+					font-weight: bold;
+					margin: 0;
+					padding: 0.5em;
+					width: 150px;
+					}
+
+					div#Codebook dd {
+					float: left;
+					margin: 0;
+					padding: 0.5em;
+					width: 420px;
+					}
+
+					div#References {
+					page-break-after: always;
+					width: 650px;
+					}
+
+					div#Appendix {
+					page-break-after: always;
+					width: 650px;
+					}
+
+					table.info {
+					border: 3px;
+					display: block;
+					inset: #000000;
+					left: 20px;
+					margin-bottom: 20px;
+					page-break-inside: avoid;
+					position: relative;
+					width: 600px;
+					}
+
+					table.values {
+					border: 2px;
+					display: block;
+					inset: #000000;
+					left: 20px;
+					margin-bottom: 20px;
+					page-break-inside: avoid;
+					position: relative;
+					width: 600px;
+					}
+
+					.pagebreak {
+					background-color: transparent;
+					display: block;
+					page-break-after: always;
+					page-break-inside: avoid;
+					}
+
+					H3.vartitle { background-color: #c1d5b0; }
+				</style>
+    <style media="print" type="text/css">
+					div#toc { display: none; }
+				</style>
+    <script language="javascript" type="text/javascript"><!--
+						
+                    function toggle(element) {
+                   
+                        var nSpan = document.getElementById(element);
+                            if (nSpan.style.display == 'none') {
+	                        nSpan.style.display = 'block';
+	                        }
+                            else {
+	                        nSpan.style.display = 'none'
+	                        }
+                    }    
+                        
+                        
+                      					
+					function get_nextsibling(n)
+					{
+					x=n.nextSibling;
+					while (x.nodeType!=1)
+  						{
+  						x=x.nextSibling;
+  						}
+					return x;
+					}
+					
+					function get_firstchild(n)
+					{
+					x=n.firstChild;
+					while (x.nodeType!=1)
+					  {
+					  x=x.nextSibling;
+					  }
+					return x;
+					}
+
+                    function fixPageBreaks() {
+						
+                    var oDiv = document.getElementById('Codebook');
+					
+                    var cbkTitle = get_firstchild(oDiv);
+                    var oChild = get_nextsibling(cbkTitle);
+
+					while (oChild) {
+						
+                    var pChild = get_nextsibling(oChild);
+                    var boxHeight = oChild.offsetHeight;
+                    var boxHeight2 = pChild.offsetHeight;
+                    totalHeight = boxHeight + boxHeight2;
+
+						if (totalHeight < 850) {
+							oChild.style.pageBreakAfter = 'auto';
+							pChild.style.pageBreakAfter = 'always';
+							oChild = get_nextsibling(pChild);
+						else {
+						
+							if (get_nextsibling(oChild)) { oChild = get_nextsibling(oChild); }
+                   			 else { oChild.pageBreakAfter = 'auto';break;}
+                    		if (get_nextsibling(pChild)) { }
+                    		else { oChild.pageBreakAfter = 'auto';pChild.pageBreakAfter = 'auto';break;}
+                   }
+					}
+					}
+    
+					--></script><!----><meta http-equiv="x-ua-compatible" content="IE=7" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="Keywords" content="Surveys,Data Collection,NCHS,NHANES,National Health and Nutrition Examination Survey,data,documentation,Cholesterol - LDL &amp; Triglycerides" />
+    <meta name="DC.Subject" content="NHANES 2011-2012: Cholesterol - LDL &amp; Triglycerides Data Documentation" />
+    <meta name="DC.Language" scheme="ISO 639-2" content="eng" />
+    <link rel="Prev" Title="NHANES  2011-2012 Laboratory page" href="http://www.cdc.gov/nchs/nhanes/2011-2012/nhanes11_12.htm">
+      <title>
+						NHANES 2011 -
+						2012:
+						Cholesterol - LDL &amp; Triglycerides Data Documentation, Codebook, and Frequencies
+					</title>
+    </link>
+  </head>
+  <body onLoad="fixPageBreaks()">
+    <div id="toc">
+      <h3>Table of Contents</h3>
+      <ul>
+        <li>
+          <a href="TRIGLY_G.htm#Component_Description">Component Description</a>
+        </li>
+        <li>
+          <a href="TRIGLY_G.htm#Eligible_Sample">Eligible Sample</a>
+        </li>
+        <li>
+          <a href="TRIGLY_G.htm#Description_of_Laboratory_Methodology">Description of Laboratory Methodology</a>
+        </li>
+        <li>
+          <a href="TRIGLY_G.htm#Laboratory_Quality_Assurance_and_Monitoring">Laboratory Quality Assurance and Monitoring</a>
+        </li>
+        <li>
+          <a href="TRIGLY_G.htm#Data_Processing_and_Editing">Data Processing and Editing</a>
+        </li>
+        <li>
+          <a href="TRIGLY_G.htm#Analytic_Notes">Analytic Notes</a>
+        </li>
+        <li>
+          <a href="#References">References</a>
+        </li>
+        <li>
+								Codebook
+								<div id="CodebookLinks">
+            <ul>
+              <li>
+                <a href="TRIGLY_G.htm#SEQN">SEQN - Respondent sequence number</a>
+              </li>
+              <li>
+                <a href="TRIGLY_G.htm#WTSAF2YR">WTSAF2YR - Fasting Subsample 2 Year MEC Weight</a>
+              </li>
+              <li>
+                <a href="TRIGLY_G.htm#LBXTR">LBXTR  - Triglyceride (mg/dL)</a>
+              </li>
+              <li>
+                <a href="TRIGLY_G.htm#LBDTRSI">LBDTRSI - Triglyceride (mmol/L)</a>
+              </li>
+              <li>
+                <a href="TRIGLY_G.htm#LBDLDL">LBDLDL - LDL-cholesterol (mg/dL)</a>
+              </li>
+              <li>
+                <a href="TRIGLY_G.htm#LBDLDLSI">LBDLDLSI - LDL-cholesterol (mmol/L)</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div id="wrapper">
+      <div id="PageHeader" xmlns="">
+        <h1>
+				National Health and Nutrition Examination Survey
+			</h1>
+        <h2>2011 - 2012 Data Documentation, Codebook, and Frequencies
+			</h2>
+        <h3>Cholesterol - LDL &amp; Triglycerides (TRIGLY_G)
+			</h3>
+        <h4>
+				Data File: TRIGLY_G.xpt
+			</h4>
+        <h5 class="left">
+				First Published:
+				January
+				,
+				2014</h5>
+        <h5 class="right">
+				Last Revised:
+				
+						NA
+					</h5>
+      </div>
+      <div id="Sections" xmlns="">
+        <h2><a name="Component_Description"></a>Component Description</h2><p>The goals of this component are: 1) to monitor the prevalence and trends in major cardiovascular conditions and risk factors in the U.S.; and 2) to evaluate prevention and treatment programs targeting cardiovascular disease in the United States.</p>
+<p>The main element of the cardiovascular disease laboratory component in NHANES is blood lipid levels. Cardiovascular disease is the leading cause of death in the United States. The data will be used to monitor the status of hyperlipidemia and the success of the National Cholesterol Education Program.</p><h2><a name="Eligible_Sample"></a>Eligible Sample</h2><p>Participants aged 12 years and older, who were examined in the morning (AM) session, were tested. </p>
+<h2><a name="Description_of_Laboratory_Methodology"></a>Description of Laboratory Methodology</h2><p>Blood specimens were processed, stored, and shipped to University of Minnesota, Minneapolis, MN for analysis. Vials are stored under appropriate frozen (-20&deg;C) conditions until they are shipped to University of Minnesota for testing. </p>
+<p><strong>Roche Modular P Chemistry Analyzer <br />
+Triglycerides</strong></p>
+<p>In this enzymatic method reagent 1 (glycerol blanking) is added first. Free glycerol is converted to glycerol-3-phosphate (G3P) by glycerol kinase. G3P is acted upon by glycerol phosphate oxidase to produce dihydroxyacetone phosphate and hydrogen peroxide. The hydrogen peroxide combines with 4-chlorophenol under the action of peroxidase to produce an oxidation product that that does not react with the colorometric component of reagent 2. After this initial reaction sequence is completed, the Mod P records a blank absorbance reading. Then reagent 2 is added. The second reaction is driven by the reagents from bottle 1, with lipase added in reagent 2 to convert triglycerides to glycerol, and 4-aminophenzone added to react with the hydrogen peroxide produced in the last reaction. The reaction is measured at 505 nm (secondary wavelength = 700 nm). This method is a two-reagent, endpoint reaction that is specific for triglycerides. </p>
+<p>Triglycerides are fatty acid esters of glycerol that have three hydroxyl groups. Because they are insoluble in water, the triglycerides are transported with other more polar lipids. Elevated triglyceride measurements are associated with diabetes mellitus, pancreatitis, alcoholism, glycogen storage disease, hypothyroidism, nephrosis, pregnancy, use of oral contraceptives and gout. Triglyceride levels are decreased in hyperthyroidism, use of certain lipid-lowering drugs and malabsorption syndrome</p>
+<p>There were no changes (from the previous 2 years of NHANES) to equipment, lab method and lab site.</p>
+<p>Detailed instructions on specimen collection and processing can be found in the <a href="http://www.cdc.gov/nchs/data/nhanes/nhanes_09_10/manual_lab.pdf" target="_blank">NHANES Laboratory/Medical Technologists Procedures Manual (LPM).</a></p><h2><a name="Data_Processing_and_Editing"></a>Data Processing and Editing</h2><p>The analytical methods are described in the <em>Description of Laboratory Methodology</em> section above.</p>
+<p>Three&nbsp;calculated variables were created in this data file. The formulas for their&nbsp;creation follow: </p>
+<p><strong>LBDTRSI</strong> </p>
+<p>The triglycerides value in mg/dL (LBXTR) was converted to mmol/L (LBDTRSI) by multiplying by 0.01129. </p>
+<p><strong>LBDLDL</strong> </p>
+<p>Serum LDL-cholesterol levels were derived on examinees that were examined in the morning session only. The distribution of serum LDL-cholesterol should be estimated only on examinees aged 12 and above who fasted at least 8.5 hours or more but less than 24 hours in the morning session. LDL-cholesterol is calculated from measured values of total cholesterol, triglycerides, and HDL-cholesterol according to the Friedewald calculation: </p>
+<p>&nbsp;&nbsp;&nbsp; [LDL-cholesterol] = [total cholesterol] &ndash; [HDL-cholesterol] &ndash; [triglycerides/5] </p>
+<p>where all values are expressed in mg/dL. The calculation is valid for triglycerides less than or equal to 400 mg/dL.</p>
+<p><strong>LBDLDLSI</strong> </p>
+<p>The LDL-cholesterol in mg/dL (LBDLDL) was converted to mmol/L (LBDLDLSI) by multiplying by 0.02586. </p><h2><a name="Laboratory_Quality_Assurance_and_Monitoring"></a>Laboratory Quality Assurance and Monitoring</h2><p>The NHANES quality control and quality assurance protocols (QA/QC) meet the 1988 Clinical Laboratory Improvement Act mandates. Detailed QA/QC instructions are discussed in the NHANES Laboratory/Medical Technologists Procedures Manual (LPM). </p><h2><a name="Analytic_Notes"></a>Analytic Notes</h2><p>Refer to the 2011-2012 <a href="http://www.cdc.gov/nchs/nhanes/nhanes2011-2012/labdoc_g.htm">Laboratory Data Overview </a>for general information on NHANES laboratory data.</p>
+<p>&nbsp;The analysis of NHANES 2011-2012&nbsp;laboratory data must be conducted using the appropriate survey design and demographic variables. The <a href="http://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics&amp;CycleBeginYear=2011">NHANES 2011-2012 Demographics File</a> contains demographic data, health indicators, and other related information collected during household interviews as well as the sample weight variables. The <a href="http://www.cdc.gov/nchs/nhanes/nhanes2011-2012/FASTQX_G.htm">Fasting Questionnaire File</a> includes auxiliary information such as fasting status, the time of venipuncture, and the conditions precluding venipuncture. The demographics and fasting questionnaire files may be linked to the laboratory data file using the unique survey participant identifier (i.e., SEQN). </p>
+<p>In cases, where the result was below the limit of detection, the value for that variable is the detection limit divided by the square root of two.</p>
+<p><strong></strong></p>
+<p><strong>LBXTR and LBXLDL<br />
+</strong>&nbsp;<br />
+Serum levels were measured&nbsp;for examinees that were examined in the morning session only. The distribution of serum triglycerides should be estimated only on examinees aged 12 and above who fasted at least 8.5 hours or more but less than 24 hours.</p>
+<p>The Laboratory TRIGLY_F data file contains laboratory test results for triglycerides (LBXTR), which uses the reference analytic method. The NHANES Lab 40 biochemistry profiles also include measurements of triglycerides. The Lab 40 variable name is LBXSTR. The appropriate variable to use from the TRIGLY_F data file is LBXTR.</p>
+<p>&nbsp;<strong>Sampling Weights<br />
+</strong><br />
+The analyst should use the special sampling weights in this file to analyze triglycerides and LDL-cholesterol. </p>
+<p>Please refer to the NHANES <a href="http://www.cdc.gov/nchs/nhanes/survey_methods.htm" target="_blank">Analytic Guidelines&nbsp;</a> and the on-line NHANES&nbsp;<a href="http://www.cdc.gov/nchs/tutorials/" target="_blank">Tutorial</a>&nbsp; for further details on the use of sample weights and other analytic issues.</p></div>
+      <div id="References" xmlns=""><a name="References"></a><h2>References</h2>
+        <ul>N/A.</ul>
+      </div>
+      <div id="Codebook" xmlns="">
+        <h2>Codebook and Frequencies</h2>
+        <div class="pagebreak">
+          <h3 class="vartitle"><a name="SEQN"></a>SEQN -
+				Respondent sequence number</h3>
+          <dl>
+            <dt>Variable Name: </dt>
+            <dd class="info">SEQN</dd>
+            <dt>SAS Label: </dt>
+            <dd>Respondent sequence number</dd>
+            <dt>English Text: </dt>
+            <dd class="info">Respondent sequence number</dd>
+            <dt>Target: </dt>
+            <dd> Both males and females 12 YEARS -
+			150 YEARS</dd>
+          </dl>
+        </div>
+        <div>
+          <p>&nbsp;</p>
+        </div>
+        <div class="pagebreak">
+          <h3 class="vartitle"><a name="WTSAF2YR"></a>WTSAF2YR -
+				Fasting Subsample 2 Year MEC Weight</h3>
+          <dl>
+            <dt>Variable Name: </dt>
+            <dd class="info">WTSAF2YR</dd>
+            <dt>SAS Label: </dt>
+            <dd>Fasting Subsample 2 Year MEC Weight</dd>
+            <dt>English Text: </dt>
+            <dd class="info">Fasting Subsample 2 Year MEC Weight' </dd>
+            <dt>Target: </dt>
+            <dd> Both males and females 12 YEARS -
+			150 YEARS</dd>
+          </dl>
+          <table class="values">
+            <thead>
+              <tr>
+                <th class="values">Code or Value</th>
+                <th class="values">Value Description</th>
+                <th class="values">Count</th>
+                <th class="values">Cumulative</th>
+                <th class="values">Skip to Item</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="values">0 to 521033.37059</td>
+                <td class="values">Range of Values</td>
+                <td class="values" align="right">3239</td>
+                <td class="values" align="right">3239</td>
+                <td class="values">
+                </td>
+              </tr>
+              <tr>
+                <td class="values">.</td>
+                <td class="values">Missing</td>
+                <td class="values" align="right">0</td>
+                <td class="values" align="right">3239</td>
+                <td class="values">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <p>&nbsp;</p>
+        </div>
+        <div class="pagebreak">
+          <h3 class="vartitle"><a name="LBXTR"></a>LBXTR  -
+				Triglyceride (mg/dL)</h3>
+          <dl>
+            <dt>Variable Name: </dt>
+            <dd class="info">LBXTR </dd>
+            <dt>SAS Label: </dt>
+            <dd>Triglyceride (mg/dL)</dd>
+            <dt>English Text: </dt>
+            <dd class="info">Triglyceride (mg/dL)</dd>
+            <dt>Target: </dt>
+            <dd> Both males and females 12 YEARS -
+			150 YEARS</dd>
+          </dl>
+          <table class="values">
+            <thead>
+              <tr>
+                <th class="values">Code or Value</th>
+                <th class="values">Value Description</th>
+                <th class="values">Count</th>
+                <th class="values">Cumulative</th>
+                <th class="values">Skip to Item</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="values">18 to 1562</td>
+                <td class="values">Range of Values</td>
+                <td class="values" align="right">2990</td>
+                <td class="values" align="right">2990</td>
+                <td class="values">
+                </td>
+              </tr>
+              <tr>
+                <td class="values">.</td>
+                <td class="values">Missing</td>
+                <td class="values" align="right">249</td>
+                <td class="values" align="right">3239</td>
+                <td class="values">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <p>&nbsp;</p>
+        </div>
+        <div class="pagebreak">
+          <h3 class="vartitle"><a name="LBDTRSI"></a>LBDTRSI -
+				Triglyceride (mmol/L)</h3>
+          <dl>
+            <dt>Variable Name: </dt>
+            <dd class="info">LBDTRSI</dd>
+            <dt>SAS Label: </dt>
+            <dd>Triglyceride (mmol/L)</dd>
+            <dt>English Text: </dt>
+            <dd class="info">Triglyceride (mmol/L)</dd>
+            <dt>Target: </dt>
+            <dd> Both males and females 12 YEARS -
+			150 YEARS</dd>
+          </dl>
+          <table class="values">
+            <thead>
+              <tr>
+                <th class="values">Code or Value</th>
+                <th class="values">Value Description</th>
+                <th class="values">Count</th>
+                <th class="values">Cumulative</th>
+                <th class="values">Skip to Item</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="values">0.203 to 17.635</td>
+                <td class="values">Range of Values</td>
+                <td class="values" align="right">2990</td>
+                <td class="values" align="right">2990</td>
+                <td class="values">
+                </td>
+              </tr>
+              <tr>
+                <td class="values">.</td>
+                <td class="values">Missing</td>
+                <td class="values" align="right">249</td>
+                <td class="values" align="right">3239</td>
+                <td class="values">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <p>&nbsp;</p>
+        </div>
+        <div class="pagebreak">
+          <h3 class="vartitle"><a name="LBDLDL"></a>LBDLDL -
+				LDL-cholesterol (mg/dL)</h3>
+          <dl>
+            <dt>Variable Name: </dt>
+            <dd class="info">LBDLDL</dd>
+            <dt>SAS Label: </dt>
+            <dd>LDL-cholesterol (mg/dL)</dd>
+            <dt>English Text: </dt>
+            <dd class="info">LDL-cholesterol (mg/dL)</dd>
+            <dt class="info">English Instructions: </dt>
+            <dd class="info">LBDLDL = ROUND(LBXTC-(LBXHDD+LBXTR/5) for LBXTR less than or equal to 400 mg/dL, and missing for LBXTR greater than 400 mg/dL</dd>
+            <dt>Target: </dt>
+            <dd> Both males and females 12 YEARS -
+			150 YEARS</dd>
+          </dl>
+          <table class="values">
+            <thead>
+              <tr>
+                <th class="values">Code or Value</th>
+                <th class="values">Value Description</th>
+                <th class="values">Count</th>
+                <th class="values">Cumulative</th>
+                <th class="values">Skip to Item</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="values">9 to 331</td>
+                <td class="values">Range of Values</td>
+                <td class="values" align="right">2942</td>
+                <td class="values" align="right">2942</td>
+                <td class="values">
+                </td>
+              </tr>
+              <tr>
+                <td class="values">.</td>
+                <td class="values">Missing</td>
+                <td class="values" align="right">297</td>
+                <td class="values" align="right">3239</td>
+                <td class="values">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <p>&nbsp;</p>
+        </div>
+        <div class="pagebreak">
+          <h3 class="vartitle"><a name="LBDLDLSI"></a>LBDLDLSI -
+				LDL-cholesterol (mmol/L)</h3>
+          <dl>
+            <dt>Variable Name: </dt>
+            <dd class="info">LBDLDLSI</dd>
+            <dt>SAS Label: </dt>
+            <dd>LDL-cholesterol (mmol/L)</dd>
+            <dt>English Text: </dt>
+            <dd class="info">LDL-cholesterol (mmol/L)</dd>
+            <dt>Target: </dt>
+            <dd> Both males and females 12 YEARS -
+			150 YEARS</dd>
+          </dl>
+          <table class="values">
+            <thead>
+              <tr>
+                <th class="values">Code or Value</th>
+                <th class="values">Value Description</th>
+                <th class="values">Count</th>
+                <th class="values">Cumulative</th>
+                <th class="values">Skip to Item</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="values">0.233 to 8.56</td>
+                <td class="values">Range of Values</td>
+                <td class="values" align="right">2942</td>
+                <td class="values" align="right">2942</td>
+                <td class="values">
+                </td>
+              </tr>
+              <tr>
+                <td class="values">.</td>
+                <td class="values">Missing</td>
+                <td class="values" align="right">297</td>
+                <td class="values" align="right">3239</td>
+                <td class="values">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <p>&nbsp;</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

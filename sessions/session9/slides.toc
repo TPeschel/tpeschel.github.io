@@ -1,0 +1,7 @@
+\beamer@endinputifotherversion {3.33pt}
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Choosing a Method}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Types of Models}{9}{0}{1}
+\beamer@sectionintoc {2}{Modelling in R}{12}{0}{2}
+\beamer@subsectionintoc {2}{1}{Model Formulae in R}{12}{0}{2}
+\beamer@sectionintoc {3}{Examples}{19}{0}{3}

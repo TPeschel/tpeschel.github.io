@@ -1,0 +1,5 @@
+## Birth data
+require(Epi)
+data(births)
+load("birthsraw.rdata")
+load("births.rdata")

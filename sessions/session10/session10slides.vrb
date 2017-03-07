@@ -1,0 +1,16 @@
+\frametitle{Exercise}
+Try to reproduce the plot! Hints:
+  \begin{enumerate}
+  \item set up a ggplot object, think about the aesthetics (\texttt{aes()}). Which quality of the graph you wanna set to which variable?
+  \item begin with the lines (\texttt{geom\_smooth()})
+  \item add the points (\texttt{geom\_jitter()}; do not think about the symbols in the first place; try to adjust the width and height appropriately)
+  \item change the colour of the lines and points (\texttt{scale\_colour\_manual()}); I used midnightblue for male and deeppink for female
+  \item change the symbols (\texttt{scale\_shape\_manual()}); use
+\begin{verbatim}
+    values = c("male" = "\u2642","female" = "\u2640"))
+\end{verbatim}
+     as values
+  \item set the axes titles
+  \item change to text of the y axis to percentage
+  \item etc
+  \end{enumerate}

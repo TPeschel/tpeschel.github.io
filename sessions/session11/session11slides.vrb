@@ -1,0 +1,7 @@
+\frametitle{Solution}
+  \begin{itemize}
+  \item get the scatterplot matrix
+  \end{itemize}
+\begin{center}
+\includegraphics[width=11.5cm]{pairs2.png}
+\end{center}

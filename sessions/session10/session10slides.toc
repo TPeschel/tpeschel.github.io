@@ -1,0 +1,13 @@
+\beamer@endinputifotherversion {3.33pt}
+\beamer@sectionintoc {1}{Generalized Linear Models}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Overview and Data}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{Binary Response Variables}{8}{0}{1}
+\beamer@subsectionintoc {1}{3}{Binomial/Logistic Regression}{35}{0}{1}
+\beamer@subsectionintoc {1}{4}{The famous O-Ring example}{43}{0}{1}
+\beamer@subsectionintoc {1}{5}{Ancova with a Binary Response Variable }{50}{0}{1}
+\beamer@sectionintoc {2}{GLMs and Count Data}{57}{0}{2}
+\beamer@sectionintoc {3}{Count Data on Proportions}{85}{0}{3}
+\beamer@sectionintoc {4}{Recap}{93}{0}{4}
+\beamer@sectionintoc {5}{Binomial/Logistic Regression}{106}{0}{5}
+\beamer@sectionintoc {6}{The famous O-Ring example}{115}{0}{6}
+\beamer@sectionintoc {7}{Ancova with a Binary Response Variable }{124}{0}{7}

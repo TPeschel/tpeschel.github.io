@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Regression}{3}{0}{1}
+\beamer@sectionintoc {2}{Data}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{Variables}{8}{0}{2}
+\beamer@sectionintoc {3}{\texttt {lm()}}{9}{0}{3}
+\beamer@sectionintoc {4}{\texttt {glm}}{24}{0}{4}

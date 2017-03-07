@@ -1,0 +1,18 @@
+## read in data
+
+require(Hmisc)
+demogr <- sasxport.get("DEMO_G.XPT")
+bp <- sasxport.get("BPX_G.XPT")
+physact <- sasxport.get("PAQ_G.XPT")
+bm <- sasxport.get("BMX_G.XPT")
+
+require(dplyr)
+
+## BMDSTATS - Body Measures Component Status Code
+## 1 	Complete data for age group 
+## 2 	Partial: Only height and weight obtained
+## 3 	Other partial exam 
+## 4 	No body measures exam data
+
+## BMXWT - Weight (kg)
+bm <- bm %>% select(bmdstats,bmxwt)

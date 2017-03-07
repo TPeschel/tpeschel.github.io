@@ -1,0 +1,17 @@
+\frametitle{Nested or Stratified Effects}
+
+A slightly different way of parameterizing the model gives stratified effects:
+
+\begin{center}
+\begin{tabular}{c c c c}
+&&\multicolumn{2}{c}{$Z$}\\
+&&1&2\\
+\hline
+   &1&$\beta_1$&$\beta_1\delta_{12}$\\
+$X$&2&$\beta_2$&$\beta_2+\delta_{22}$\\
+   &3&$\beta_3$&$\beta_3+\delta_{32}$\\
+\end{tabular}
+\end{center}
+
+Same number of parameters as for interaction, but the $\delta$`s now measure the effects of $Z$ at each level of $X$. In \texttt{R} this would be produced by the model formula \verb|Y ~ -1 + X + X:Z |
+

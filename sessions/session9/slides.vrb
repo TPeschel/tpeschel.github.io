@@ -1,0 +1,21 @@
+\frametitle{Simple Linear Regression}
+With \texttt{aov(m)} you can fit an analysis of variance model for each stratum.
+\begin{exampleblock}{Input}
+\begin{semiverbatim}
+> aov(m)
+\end{semiverbatim}
+\end{exampleblock}
+\begin{exampleblock}{Output}\footnotesize
+\begin{semiverbatim}
+Call:
+   aov(formula = m)
+
+Terms:
+                        x Residuals
+Sum of Squares  1389.7606   15.3842
+Deg. of Freedom         1        28
+
+Residual standard error: 0.7412399
+Estimated effects may be unbalanced
+\end{semiverbatim}
+\end{exampleblock}
