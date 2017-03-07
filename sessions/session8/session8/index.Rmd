@@ -1,0 +1,344 @@
+---
+title       : Session8
+subtitle    : 
+author      : 
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+---
+
+
+<style>
+strong {
+  font-weight: bold;
+  color: red;
+  font-size: 115%
+}
+</style>
+
+
+
+
+--- .segue bg:grey
+
+
+# Back to last week's graph
+
+
+---
+
+
+## last week's line graph
+
+```{r,cache=FALSE}
+library("ggplot2")
+load("../session8dta/aerzte.rdata")
+p.fa <- ggplot(fa,aes(x = as.numeric(age.group), 
+              y = mean.val, 
+              linetype = sex)) +
+  scale_linetype_manual(values = c(1,3,4)) +
+  geom_line(size = 1.5) +
+  theme_bw() +
+  theme(
+    legend.position = c(0.2,0.9),
+    legend.key.width = unit(2,"cm"),
+    legend.background = element_blank()
+  )
+```
+
+
+---
+
+
+## last week's line graph
+
+
+```{r, fig.width=10, fig.height=6.5,fig.align='center'}
+print(p.fa)
+```
+
+
+---
+
+
+## last week's line graph
+
+
+- we had 5 columns: sex, age.group, mean, nobs, standard deviation
+- the data were:
+
+```{r,cache=FALSE}
+head(fa)
+```
+
+
+
+---
+
+
+## last week's line graph
+
+
+- what if we have equally structured data
+- e.g. general practitioner instead of specialist
+
+
+```{r,cache=FALSE}
+head(ha)
+```
+
+
+---
+
+
+## last week's line graph
+
+
+- using the command `%+%` you can interchange the data inside a graph
+
+
+```{r, fig.width=9, fig.height=5.5,fig.align='center',cache=FALSE}
+p.ha <- p.fa %+% ha
+p.ha
+```
+
+
+
+
+---
+
+
+## last week's line graph
+
+
+- you can still change the graph, e.g. the axis titles 
+
+```{r, fig.width=9, fig.height=5.5,fig.align='center',cache=FALSE}
+p.ha + labs(x = "Altersgruppen", 
+            y = "Mittelwert Hausarztbesuch")
+```
+
+
+---
+
+
+## last week's line graph
+
+
+- another way to plot these two graphs effectively is to combine both data frame and use faceting
+- therefore we add a variable to each of the two data frames indicating the kind of physician
+- then we combine the two data frame using the command `rbind()` (- the *r* stands for row)
+- afterwards we can use the new variable for faceting (`facet_wrap()`)
+
+```{r, fig.width=9, fig.height=5.5,fig.align='center',cache=FALSE}
+fa$physician <- "specialist"
+ha$physician <- "general"
+phys <- rbind(fa,ha)
+```
+
+
+---
+
+
+## last week's line graph
+
+
+```{r, fig.width=9, fig.height=6,fig.align='center',cache=FALSE}
+p.ha %+% phys + facet_wrap(~physician,nrow = 2)
+```
+
+
+---
+
+## last week's line graph
+
+
+```{r,cache=FALSE}
+p.phy <- ggplot(phys,aes(x = as.numeric(age.group), 
+              y = mean.val, 
+              linetype = sex)) +
+  scale_linetype_manual(values = c(1,3,4)) +
+  geom_line(size = 1.5) +
+  facet_wrap(~physician,nrow =2) +
+  theme_bw() +
+  theme(
+    legend.position = c(0.2,0.9),
+    legend.key.width = unit(2,"cm"),
+    legend.background = element_blank()
+  )
+```
+
+
+---
+
+
+## last week's line graph
+
+
+```{r, fig.width=9, fig.height=6,fig.align='center',cache=FALSE}
+p.phy
+```
+
+
+--- .segue bg:grey
+
+
+# Reshaping and summarising data
+
+
+---
+
+
+## dplyr and reshape2
+
+>  - are packages written by Hadley Wickham (like ggplot2)
+>  - they contain lot of functions for data wrangling
+>  - we will begin with simple summarising
+>  - therefore we need the `group_by()` adn the `summarise()` function (dplyr)
+
+
+---
+
+
+## dplyr and reshape2
+
+- first we load the data from the file "kromeyer.rdata" - it is a `rdata` file - so we use the `load()` function
+- then we group the data frame by the `GRP` column (scientific group) and calculate the mean of `AGE`
+
+```{r,eval=FALSE}
+library(dplyr)
+load("../session8dta/kromeyer.rdata")
+kh %>% group_by(GRP) %>%
+  summarise(
+    mean.age = mean(AGE)
+  )
+
+```
+
+
+---
+
+## dplyr and reshape
+
+```{r,cache=FALSE}
+kh %>% group_by(GRP) %>%
+  summarise(
+    mean.age = mean(AGE)
+  )
+```
+
+
+---
+
+
+## dplyr and reshape2
+
+- we can calculate more than one summary statistic
+
+```{r, eval=FALSE}
+kh.sum <- kh %>% group_by(GRP) %>%
+    summarise(
+      mean.age = mean(AGE),
+      sd.age = sd(AGE),
+      mean.bmi = mean(BMI_SDS,na.rm = T)
+    )
+
+```
+
+
+---
+
+
+
+## Exercise
+
+- add the calculation of the mean and the standard deviation of 
+  - `HEIGHT_SDS`
+  - `WEIGHT_SDS`
+  - `BMI_SDS`
+
+
+--- 
+
+## date and time
+
+- there is a package `lubridate` (also authored by HW) to handle date and time objects
+- we wanna use this package to extract the year and the month from the `EDAT` column in the kh data set
+- so load (and if not already installed do so before) the package the type
+
+```{r}
+kh$year <- year(kh$EDAT)
+```
+
+
+--- 
+
+## date and time
+
+
+- you created a new column containing the year
+
+
+```{r}
+head(kh)
+```
+
+
+
+--- 
+
+## date and time exercise
+
+Create a column `month` containing the month from the `EDAT` column (the respective command is not surprisingly `month()`)!
+
+
+--- 
+
+## date and time solution
+
+
+```{r}
+kh$month <- month(kh$EDAT)
+```
+
+
+--- 
+
+## Exercise
+
+
+- Now use these two variables `month` and `year` and `dplyr` for counting the number of anthro measurements per month. 
+- Create a new data frame containing the summarised information.
+- Create a plot showing the months of the year on the x-axis and number of anthro entries on the y-axis; draw one line per year.
+- do an anova of bmi.sds dependenton year. Are there differences?
+
+
+
+
+--- 
+
+## dplyr and reshape2
+
+- another way to do the same is
+
+
+```{r,eval=FALSE}
+library(reshape2)
+kh %>% melt() %>% dcast(variable ~ sex, mean, na.rm = T)
+```
+
+
+---
+
+
+## dplyr and reshape2
+
+
+```{r,eval=FALSE}
+kh %>% melt() %>% dcast(variable ~ sex, margins = "sex", mean, na.rm = T)
+```
+
+

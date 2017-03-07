@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Session8</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Session8">
+  <meta name="author" content="">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Session8</h1>
+    <h2></h2>
+    <p><br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <style>
+strong {
+  font-weight: bold;
+  color: red;
+  font-size: 115%
+}
+</style>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-2" style="background:grey;">
+  <hgroup>
+    <h1>Back to last week&#39;s graph</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>last week&#39;s line graph</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">library(&quot;ggplot2&quot;)
+load(&quot;../session8dta/aerzte.rdata&quot;)
+p.fa &lt;- ggplot(fa,aes(x = as.numeric(age.group), 
+              y = mean.val, 
+              linetype = sex)) +
+  scale_linetype_manual(values = c(1,3,4)) +
+  geom_line(size = 1.5) +
+  theme_bw() +
+  theme(
+    legend.position = c(0.2,0.9),
+    legend.key.width = unit(2,&quot;cm&quot;),
+    legend.background = element_blank()
+  )
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>last week&#39;s line graph</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">print(p.fa)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>last week&#39;s line graph</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>we had 5 columns: sex, age.group, mean, nobs, standard deviation</li>
+<li>the data were:</li>
+</ul>
+
+<pre><code class="r">head(fa)
+</code></pre>
+
+<pre><code>## # A tibble: 6 x 5
+##        sex age.group mean.val n.obs   sd.val
+##      &lt;chr&gt;     &lt;ord&gt;    &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+## 1 männlich 19 bis 29 2.294118    17 1.571810
+## 2 männlich 29 bis 39 2.302326    43 1.406361
+## 3 männlich 39 bis 49 2.718254   252 1.552528
+## 4 männlich 49 bis 59 3.309859   284 2.040866
+## 5 männlich 59 bis 69 4.123746   299 1.949377
+## 6 männlich 69 bis 79 5.127451   204 1.973577
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>last week&#39;s line graph</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>what if we have equally structured data</li>
+<li>e.g. general practitioner instead of specialist</li>
+</ul>
+
+<pre><code class="r">head(ha)
+</code></pre>
+
+<pre><code>## # A tibble: 6 x 5
+##        sex age.group  mean.val n.obs    sd.val
+##      &lt;chr&gt;    &lt;fctr&gt;     &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
+## 1 männlich 19 bis 29 0.6111111    18 0.5016313
+## 2 männlich 29 bis 39 0.5454545    44 0.5036862
+## 3 männlich 39 bis 49 0.7098039   255 0.4547453
+## 4 männlich 49 bis 59 0.7881944   288 0.4092990
+## 5 männlich 59 bis 69 0.9144737   304 0.2801244
+## 6 männlich 69 bis 79 0.9371981   207 0.2431945
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>last week&#39;s line graph</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>using the command <code>%+%</code> you can interchange the data inside a graph</li>
+</ul>
+
+<pre><code class="r">p.ha &lt;- p.fa %+% ha
+p.ha
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>last week&#39;s line graph</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>you can still change the graph, e.g. the axis titles </li>
+</ul>
+
+<pre><code class="r">p.ha + labs(x = &quot;Altersgruppen&quot;, 
+            y = &quot;Mittelwert Hausarztbesuch&quot;)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>last week&#39;s line graph</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>another way to plot these two graphs effectively is to combine both data frame and use faceting</li>
+<li>therefore we add a variable to each of the two data frames indicating the kind of physician</li>
+<li>then we combine the two data frame using the command <code>rbind()</code> (- the <em>r</em> stands for row)</li>
+<li>afterwards we can use the new variable for faceting (<code>facet_wrap()</code>)</li>
+</ul>
+
+<pre><code class="r">fa$physician &lt;- &quot;specialist&quot;
+ha$physician &lt;- &quot;general&quot;
+phys &lt;- rbind(fa,ha)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>last week&#39;s line graph</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">p.ha %+% phys + facet_wrap(~physician,nrow = 2)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>last week&#39;s line graph</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">p.phy &lt;- ggplot(phys,aes(x = as.numeric(age.group), 
+              y = mean.val, 
+              linetype = sex)) +
+  scale_linetype_manual(values = c(1,3,4)) +
+  geom_line(size = 1.5) +
+  facet_wrap(~physician,nrow =2) +
+  theme_bw() +
+  theme(
+    legend.position = c(0.2,0.9),
+    legend.key.width = unit(2,&quot;cm&quot;),
+    legend.background = element_blank()
+  )
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>last week&#39;s line graph</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">p.phy
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-10-1.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-13" style="background:grey;">
+  <hgroup>
+    <h1>Reshaping and summarising data</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>dplyr and reshape2</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>are packages written by Hadley Wickham (like ggplot2)</li>
+<li>they contain lot of functions for data wrangling</li>
+<li>we will begin with simple summarising</li>
+<li>therefore we need the <code>group_by()</code> adn the <code>summarise()</code> function (dplyr)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>dplyr and reshape2</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>first we load the data from the file &quot;kromeyer.rdata&quot; - it is a <code>rdata</code> file - so we use the <code>load()</code> function</li>
+<li>then we group the data frame by the <code>GRP</code> column (scientific group) and calculate the mean of <code>AGE</code></li>
+</ul>
+
+<pre><code class="r">library(dplyr)
+load(&quot;../session8dta/kromeyer.rdata&quot;)
+kh %&gt;% group_by(GRP) %&gt;%
+  summarise(
+    mean.age = mean(AGE)
+  )
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>dplyr and reshape</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">kh %&gt;% group_by(GRP) %&gt;%
+  summarise(
+    mean.age = mean(AGE)
+  )
+</code></pre>
+
+<pre><code>## # A tibble: 52 x 2
+##      GRP  mean.age
+##    &lt;chr&gt;     &lt;dbl&gt;
+## 1  A2_01  1.021384
+## 2  A2_02  2.045535
+## 3  A2_03  3.020899
+## 4  A2_04  4.029701
+## 5  A2_05  5.001055
+## 6  A2_06  5.999639
+## 7  A2_07  6.981292
+## 8  A2_08  8.005000
+## 9  A2_09  9.007604
+## 10 A2_10 10.016805
+## # ... with 42 more rows
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>dplyr and reshape2</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>we can calculate more than one summary statistic</li>
+</ul>
+
+<pre><code class="r">kh.sum &lt;- kh %&gt;% group_by(GRP) %&gt;%
+    summarise(
+      mean.age = mean(AGE),
+      sd.age = sd(AGE),
+      mean.bmi = mean(BMI_SDS,na.rm = T)
+    )
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>Exercise</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>add the calculation of the mean and the standard deviation of 
+
+<ul>
+<li><code>HEIGHT_SDS</code></li>
+<li><code>WEIGHT_SDS</code></li>
+<li><code>BMI_SDS</code></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>date and time</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>there is a package <code>lubridate</code> (also authored by HW) to handle date and time objects</li>
+<li>we wanna use this package to extract the year and the month from the <code>EDAT</code> column in the kh data set</li>
+<li>so load (and if not already installed do so before) the package the type</li>
+</ul>
+
+<pre><code class="r">kh$year &lt;- year(kh$EDAT)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>date and time</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>you created a new column containing the year</li>
+</ul>
+
+<pre><code class="r">head(kh)
+</code></pre>
+
+<pre><code>##        SIC    sex     gebdat                EDAT   GRP   UID   AGE AGE_REF
+## 1 ID000001   male 1999-06-15 2011-01-21 07:00:00 B1_12 SA052 11.61  11.583
+## 2 ID000001   male 1999-06-15 2011-12-06 07:22:01 B1_13 SA052 12.49  12.500
+## 3 ID000002 female 2001-07-15 2011-01-11 07:00:00 B1_09 SA052  9.50   9.500
+## 4 ID000002 female 2001-07-15 2011-12-12 07:34:59 B1_10 SA052 10.42  10.417
+## 5 ID000003 female 2002-08-15 2011-01-12 07:15:00 B1_08 SA052  8.42   8.417
+## 6 ID000004 female 2000-04-15 2011-01-12 07:00:00 B1_11 SA052 10.75  10.750
+##   HEIGHT_ORIG HEIGHT_SDS WEIGHT_ORIG WEIGHT_SDS BMI_ORIG BMI_SDS year
+## 1       148.2     -0.152       69.50      2.323   31.644   2.646 2011
+## 2       154.4     -0.098       72.65      2.071   30.475   2.452 2011
+## 3       141.6      0.454       47.30      1.815   23.590   1.985 2011
+## 4       145.3      0.250       51.60      1.730   24.441   1.969 2011
+## 5       146.0      2.400       45.60      2.231   21.392   1.760 2011
+## 6       140.9     -0.643       48.90      1.338   24.631   1.944 2011
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>date and time exercise</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Create a column <code>month</code> containing the month from the <code>EDAT</code> column (the respective command is not surprisingly <code>month()</code>)!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>date and time solution</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">kh$month &lt;- month(kh$EDAT)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h2>Exercise</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Now use these two variables <code>month</code> and <code>year</code> and <code>dplyr</code> for counting the number of anthro measurements per month. </li>
+<li>Create a new data frame containing the summarised information.</li>
+<li>Create a plot showing the months of the year on the x-axis and number of anthro entries on the y-axis; draw one line per year.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>dplyr and reshape2</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>another way to do the same is</li>
+</ul>
+
+<pre><code class="r">library(reshape2)
+kh %&gt;% melt() %&gt;% dcast(variable ~ sex, mean, na.rm = T)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>dplyr and reshape2</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">kh %&gt;% melt() %&gt;% dcast(variable ~ sex, margins = &quot;sex&quot;, mean, na.rm = T)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title=''>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Back to last week&#39;s graph'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='last week&#39;s line graph'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='last week&#39;s line graph'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='last week&#39;s line graph'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='last week&#39;s line graph'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='last week&#39;s line graph'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='last week&#39;s line graph'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='last week&#39;s line graph'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='last week&#39;s line graph'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='last week&#39;s line graph'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='last week&#39;s line graph'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Reshaping and summarising data'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='dplyr and reshape2'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='dplyr and reshape2'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='dplyr and reshape'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='dplyr and reshape2'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Exercise'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='date and time'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='date and time'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='date and time exercise'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='date and time solution'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='Exercise'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='dplyr and reshape2'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='dplyr and reshape2'>
+         25
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
